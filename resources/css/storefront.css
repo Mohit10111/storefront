@@ -290,7 +290,7 @@ main {
 
 /* SECTIONS */
 .categories, .products {
-    padding: 60px 60px;
+    padding: 20px 60px 80px;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -546,17 +546,47 @@ main {
 
 .cart-item-actions {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: auto;
+    gap: 15px;
 }
 
-.cart-item-qty {
-    font-size: 13px;
-    color: #666;
+.qty-controller-form {
+    margin: 0;
+}
+
+.qty-controller {
+    display: flex;
+    align-items: center;
+    border: 1px solid #111;
+    height: 35px;
+    padding: 0 10px;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #111;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+.qty-val {
+    font-size: 14px;
+    color: #111;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-form {
+    margin: 0;
 }
 
 .remove-item-btn {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     background: none;
     border: none;
     color: #999;
@@ -780,15 +810,13 @@ main {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
     width: 100%;
     height: 100vh;
-    background: rgba(0,0,0,0.15);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.4);
     opacity: 0;
     visibility: hidden;
     transition: 0.4s ease;
-    z-index: 1999;
 }
 
 .cart-overlay.active {
@@ -1964,3 +1992,10 @@ main {
     flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center;
 }
 
+
+/* WhatsApp Widget */
+.whatsapp-widget { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; align-items: center; gap: 15px; }
+.whatsapp-bubble { background: white; padding: 12px 22px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-family: 'Inter', sans-serif; font-size: 15px; color: #555; font-weight: 500; cursor: default; opacity: 0; visibility: hidden; transform: translateX(20px); transition: all 0.3s ease; }
+.whatsapp-icon-btn { background: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.2s; }
+.whatsapp-widget:hover .whatsapp-bubble { opacity: 1; visibility: visible; transform: translateX(0); }
+.whatsapp-icon-btn:hover { transform: scale(1.1); }

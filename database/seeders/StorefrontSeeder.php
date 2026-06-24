@@ -43,6 +43,9 @@ class StorefrontSeeder extends Seeder
             'image' => '/image/cat_footwear.png'
         ]);
 
+        Category::firstOrCreate(['name' => 'Accessories', 'parent_id' => $men->id]);
+        Category::firstOrCreate(['name' => 'Activewear', 'parent_id' => $men->id]);
+
         $activewear = Category::firstOrCreate([
             'name' => 'Activewear',
             'parent_id' => $women->id,
@@ -55,17 +58,26 @@ class StorefrontSeeder extends Seeder
             'image' => '/image/cat_handbags.png'
         ]);
 
+        Category::firstOrCreate(['name' => 'Dresses', 'parent_id' => $women->id]);
+        Category::firstOrCreate(['name' => 'Jewelry', 'parent_id' => $women->id]);
+
         $boys = Category::firstOrCreate([
             'name' => 'Boys Clothing',
             'parent_id' => $kids->id,
-            'image' => '/image/cat_activewear.png'
+            'image' => '/image/cat_boys_clothing.png'
         ]);
+
+        Category::firstOrCreate(['name' => 'Toys', 'parent_id' => $kids->id]);
+        Category::firstOrCreate(['name' => 'Infant Care', 'parent_id' => $kids->id]);
 
         $decor = Category::firstOrCreate([
             'name' => 'Home Decor',
             'parent_id' => $home->id,
-            'image' => '/image/hero_banner_2.png'
+            'image' => '/image/cat_home_decor.png'
         ]);
+
+        Category::firstOrCreate(['name' => 'Furniture', 'parent_id' => $home->id]);
+        Category::firstOrCreate(['name' => 'Kitchen', 'parent_id' => $home->id]);
 
         // 4. Create Products
         $products = [
@@ -102,7 +114,7 @@ class StorefrontSeeder extends Seeder
                 'price' => 799,
                 'quantity' => 30,
                 'status' => 'active',
-                'image' => '/image/cat_footwear.png', // Fallback image
+                'image' => '/image/cat_boys_clothing.png', // Correct image
                 
             ],
             [
@@ -111,7 +123,7 @@ class StorefrontSeeder extends Seeder
                 'price' => 1299,
                 'quantity' => 10,
                 'status' => 'active',
-                'image' => '/image/hero_banner_2.png',
+                'image' => '/image/cat_home_decor.png',
                 
             ],
             [
@@ -120,7 +132,7 @@ class StorefrontSeeder extends Seeder
                 'price' => 3499,
                 'quantity' => 25,
                 'status' => 'active',
-                'image' => '/image/cat_footwear.png',
+                'image' => '/image/cat_mens_running_shoes.png',
                 
             ],
             [
@@ -139,6 +151,24 @@ class StorefrontSeeder extends Seeder
                 'quantity' => 5,
                 'status' => 'inactive', // Should be hidden from storefront
                 'image' => '/image/hero_banner_2.png',
+                
+            ],
+            [
+                'name' => 'Premium Aviator Sunglasses',
+                'category_id' => $men->id,
+                'price' => 1999,
+                'quantity' => 100,
+                'status' => 'active',
+                'image' => '/image/prod_sunglasses.png',
+                
+            ],
+            [
+                'name' => 'Luxury Smartwatch Black',
+                'category_id' => $men->id,
+                'price' => 5999,
+                'quantity' => 50,
+                'status' => 'active',
+                'image' => '/image/prod_smartwatch.png',
                 
             ]
         ];

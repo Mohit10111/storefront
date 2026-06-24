@@ -29,12 +29,13 @@
                     <div class="cart-item-details">
                         <h4>{{ $item['product']->name }}</h4>
                         <p class="cart-item-price">₹{{ number_format($item['product']->price, 2) }}</p>
-                        <div class="cart-item-actions">
-                            <span class="cart-item-qty">Qty: {{ $item['quantity'] }}</span>
-                            <form action="{{ route('cart.remove', $item['product']) }}" method="POST">
-                                @csrf
-                                <button type="submit" class="remove-item-btn">Remove</button>
-                            </form>
+                        <div class="cart-item-actions" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="qty-controller">
+                                <button type="button" class="qty-btn" onclick="window.updateCartItem({{ $item['product']->id }}, 'decrease')">-</button>
+                                <span class="qty-val" id="qty-val-{{ $item['product']->id }}">{{ $item['quantity'] }}</span>
+                                <button type="button" class="qty-btn" onclick="window.updateCartItem({{ $item['product']->id }}, 'increase')">+</button>
+                            </div>
+                            <button type="button" class="remove-item-btn" onclick="window.removeCartItem({{ $item['product']->id }})" style="background: none; border: none; color: #555; text-decoration: underline; cursor: pointer; padding: 0;">Remove</button>
                         </div>
                     </div>
                 </div>

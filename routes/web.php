@@ -25,6 +25,8 @@ Route::post('/cart/add/{product}', [\App\Http\Controllers\CartController::class,
     ->name('cart.add');
 Route::post('/cart/remove/{product}', [\App\Http\Controllers\CartController::class, 'remove'])
     ->name('cart.remove');
+Route::post('/cart/update/{product}', [\App\Http\Controllers\CartController::class, 'update'])
+    ->name('cart.update');
 
 Route::get('/checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])
     ->name('checkout.index');
