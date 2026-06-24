@@ -1,98 +1,75 @@
-# Storefront
+# Frontend Development Intern Assessment
 
-A simple Laravel-based Storefront application with Categories and Products management.
+This is a premium, full-stack Laravel storefront application built as part of the Frontend Development Intern Assessment. It features a luxury-inspired consumer storefront and a comprehensive Admin Dashboard for managing products and categories.
 
-## Laravel Version
+## Features & Architecture
 
-Laravel Framework 13.16.1
+### Layout Architecture
+- Master layout with reusable Blade components (Header, Footer, Sidebar, Mini Cart).
+- Completely DRY structure sharing the same base across all storefront pages.
 
-## Requirements
+### Premium Storefront
+- **Dynamic Header:** Transparent header on the Hero section that smoothly transitions to a solid color when scrolling.
+- **Off-Canvas Sidebar & Mini Cart:** Smooth sliding animations from left/right with full-height overlay backgrounds and scroll-locking.
+- **Luxury Aesthetic:** 100vh hero section, responsive image grids, minimal typography, and hover micro-animations on product/category cards.
+- **Dynamic Storefront:** All products and categories are pulled directly from the database without any hardcoded data.
 
-* PHP 8.2+
-* Composer
-* MySQL
-* Node.js
-* NPM
+### Admin Panel & Modules
+- **Category Module:** Complete CRUD management with image uploading. Features a JavaScript-driven multi-step form ensuring one field is visible at a time.
+- **Product Module:** Complete CRUD management with image uploading. Features a 7-step form workflow. Data persists when navigating back and forth between steps.
+- **Conditional Visibility:** Products with Quantity = 0 or Status = 'inactive' are completely hidden from the consumer storefront.
 
-## Project Setup
+## Setup Instructions
 
-### Clone Repository
+To get the application running on your local machine, follow these steps:
 
-```bash
-git clone <repository-url>
-cd storefront
-```
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repository-url>
+   cd storefront
+   ```
 
-### Install PHP Dependencies
+2. **Install PHP dependencies:**
+   ```bash
+   composer install
+   ```
 
-```bash
-composer install
-```
+3. **Install Node dependencies & compile assets:**
+   ```bash
+   npm install
+   npm run build
+   ```
 
-### Install Frontend Dependencies
+4. **Environment Setup:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Note: Please configure your `.env` file with your local database credentials.*
 
-```bash
-npm install
-```
+5. **Run Migrations & Seeders:**
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
+   *Important: Running the seeder is required to populate the database with the pre-configured categories, dummy products, and premium image assets used in the storefront design.*
 
-### Configure Environment
+6. **Link Storage (for images):**
+   ```bash
+   php artisan storage:link
+   ```
 
-Copy the environment file:
+7. **Serve the Application:**
+   ```bash
+   php artisan serve
+   ```
 
-```bash
-cp .env.example .env
-```
+## Assumptions Made During Development
+- **Authentication:** It is assumed that the Admin Panel is meant to be protected. Standard Laravel Breeze authentication is used.
+- **Design Direction:** The assessment emphasized "clean architecture." This was extended to the UI, applying a modern, high-end fashion/apparel aesthetic to demonstrate strong CSS competency.
+- **Image Handling:** Default seeded images are shipped with the repository in the public directory to ensure the storefront looks complete immediately upon seeding without requiring manual Admin uploads by the reviewer.
 
-Generate the application key:
-
-```bash
-php artisan key:generate
-```
-
-## Database Configuration
-
-Update the `.env` file:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=storefront
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-Create the database in MySQL before running migrations.
-
-## Run Migrations
-
-```bash
-php artisan migrate
-```
-
-## Start Development Server
-
-```bash
-php artisan serve
-```
-
-## Start Vite
-
-```bash
-npm run dev
-```
-
-Application URL:
-
-```text
-http://127.0.0.1:8000
-```
-
-## Verification
-
-The project has been verified successfully:
-
-* `php artisan migrate:fresh` runs successfully
-* `composer install` runs successfully
-* `npm install` runs successfully
-* `npm run dev` runs successfully
+## Tech Stack
+- Laravel 11
+- Blade Templating
+- Vanilla CSS (for maximum architectural control and custom animations)
+- Vite
