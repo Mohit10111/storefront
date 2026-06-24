@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center">Aura Storefront</h1>
+  <h1 align="center">Storefront</h1>
   <p align="center">
     A premium, full-stack e-commerce storefront built with Laravel, featuring a luxury-inspired consumer interface and a comprehensive Admin Dashboard.
   </p>
@@ -9,7 +9,7 @@
 
 ## 💎 Overview
 
-**Aura Storefront** is a modern, high-performance e-commerce platform. It separates the consumer experience—a beautifully animated, luxury-tier storefront—from the administrative backend, which provides a robust interface for inventory and category management.
+**Storefront** is a modern, high-performance e-commerce platform. It separates the consumer experience—a beautifully animated, luxury-tier storefront—from the administrative backend, which provides a robust interface for inventory and category management.
 
 The project is built on **Laravel 11** and focuses heavily on clean architectural patterns, component reusability, and modern CSS practices to deliver a flawless, JavaScript-light user experience.
 
