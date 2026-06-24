@@ -22,6 +22,12 @@ class HomeController extends Controller
         return view('home.index', compact('categories', 'products', 'activeCoupons'));
     }
 
+    public function categories()
+    {
+        $categories = Category::whereNotNull('parent_id')->get();
+        return view('home.categories', compact('categories'));
+    }
+
     public function category(Category $category)
     {
         $categoryIds = Category::where('parent_id', $category->id)->pluck('id')->toArray();

@@ -15,15 +15,20 @@ class StorefrontSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Create Admin User
-        User::updateOrCreate(
-            ['email' => 'admin@storefront.com'],
-            [
-                'name' => 'Admin User',
-                'password' => Hash::make('password'),
-                'is_admin' => true,
-            ]
-        );
+        // 1. Create Admin User (credentials pulled from .env for security)
+        $adminEmail = env('ADMIN_EMAIL');
+        $adminPassword = env('ADMIN_PASSWORD');
+
+        if ($adminEmail && $adminPassword) {
+            User::updateOrCreate(
+                ['email' => $adminEmail],
+                [
+                    'name' => 'Admin User',
+                    'password' => Hash::make($adminPassword),
+                    'is_admin' => true,
+                ]
+            );
+        }
 
         // 2. Create Parent Categories
         $men = Category::firstOrCreate(['name' => 'Men']);
