@@ -1,0 +1,46 @@
+﻿
+/* COUPON BANNER */
+.coupon-banner-section {
+    padding: 30px 60px 0;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.coupon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.coupon-banner {
+    background: #ff0000;
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+.coupon-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.coupon-discount {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.coupon-code {
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px dashed rgba(255, 255, 255, 0.8);
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+

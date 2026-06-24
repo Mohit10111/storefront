@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -56,6 +57,9 @@ public function update(Request $request, Category $category)
     $imagePath = $category->image;
 
     if ($request->hasFile('image')) {
+        if ($category->image) {
+            Storage::disk('public')->delete($category->image);
+        }
         $imagePath = $request->file('image')
             ->store('categories', 'public');
     }
@@ -69,6 +73,9 @@ public function update(Request $request, Category $category)
 }
 public function destroy(Category $category)
 {
+    if ($category->image) {
+        Storage::disk('public')->delete($category->image);
+    }
     $category->delete();
 
     return redirect()->route('categories.index');

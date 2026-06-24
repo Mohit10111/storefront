@@ -1,33 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.storefront')
 
 @section('content')
 
 <section class="products">
 
-    <h2>{{ $category->name }}</h2>
+    <h2 class="reveal-up">{{ $category->name }}</h2>
 
-    <div class="product-grid">
+    <div class="product-grid reveal-up">
 
         @forelse($products as $product)
 
-            <div class="card">
-
-                @if($product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}"
-                         alt="{{ $product->name }}">
-                @endif
-
-                <h3>{{ $product->name }}</h3>
-
-                <p class="price">
-                    ₹{{ number_format($product->price, 2) }}
-                </p>
-
-                <p class="category">
-                    {{ $category->name }}
-                </p>
-
-            </div>
+            @include('components.product-card', [
+                'product' => $product
+            ])
 
         @empty
 

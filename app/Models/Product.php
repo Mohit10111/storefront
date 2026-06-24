@@ -19,4 +19,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('quantity', '>', 0)
+                     ->where('status', 'active');
+    }
 }
